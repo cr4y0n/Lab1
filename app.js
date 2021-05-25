@@ -1,7 +1,9 @@
 const express = require('express');
 const app = express();
 
-app.listen(3000);
+app.listen(3000, () => {
+  console.log('server: running');
+});
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'))
 /* app.get('/', (req, res) => {
@@ -16,7 +18,7 @@ app.get('/api/random', (req, res) => {
 });
 
 app.get('/api/custom_random/:num', (req, res) => {
-  res.send({ 'number': Math.floor(Math.random() * req.params.num) });
+  res.send({ 'number': Math.floor(Math.random() * req.params.num + 1) });
   //for curl: curl -i -X GET localhost:3000/api/custom_random/0
 });
 
